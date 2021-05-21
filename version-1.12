@@ -1,0 +1,3 @@
+callmsg() {
+	msgbox this is the new NEW message
+}
