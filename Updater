@@ -1,0 +1,8 @@
+; updater
+#singleinstance force
+verdir = %A_ScriptDir%\git\version.txt
+urlDownloadtoFile, https://raw.githubusercontent.com/snowy42/Konect_Tool/main/version.txt, % verdir
+FileReadLine, curVer, % verdir, 1
+urlDownloadtoFile, https://raw.githubusercontent.com/snowy42/Konect_Tool/main/version-%curVer%, %A_ScriptDir%\git\new.txt
+FileMove, C:\Users\Snowy\Documents\AHK\Auto Updater\msg.cfg, C:\Users\Snowy\Documents\AHK\Auto Updater\git\
+FileCopy, C:\Users\Snowy\Documents\AHK\Auto Updater\git\new.txt, C:\Users\Snowy\Documents\AHK\Auto Updater\msg.cfg
