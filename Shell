@@ -1,0 +1,26 @@
+#include %A_ScriptDir%\msg.cfg
+
+OnExit, exitSub
+version:=1.11
+curVer:=version
+
+verdir = %A_ScriptDir%\git\version.txt
+FileDelete % verdir
+urlDownloadtoFile, https://raw.githubusercontent.com/snowy42/Konect_Tool/main/version.txt, % verdir
+
+FileReadLine, curVer, % verdir, 1
+if (curVer > version)
+{
+	Msgbox, 4, , Do you want to update?
+	IfMsgBox Yes
+		ExitApp
+}
+else
+	msgbox no update required
+	
+exitSub:
+	if (curVer > version)
+	{
+		Run %A_ScriptDir%\updater.ahk
+	}
+return
